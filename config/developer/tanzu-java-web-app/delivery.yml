@@ -12,7 +12,6 @@ spec:
   template:
     metadata:
       annotations:
-        autoscaling.knative.dev/minScale: "1"
         boot.spring.io/actuator: http://:8081/actuator
         boot.spring.io/version: 2.7.3
         conventions.apps.tanzu.vmware.com/applied-conventions: |-
@@ -27,7 +26,7 @@ spec:
           appliveview-sample/app-live-view-systemproperties
         developer.conventions/target-containers: workload
         kubectl.kubernetes.io/last-applied-configuration: |
-          {"apiVersion":"carto.run/v1alpha1","kind":"Workload","metadata":{"annotations":{},"labels":{"app.kubernetes.io/part-of":"tanzu-java-web-app","apps.tanzu.vmware.com/has-tests":"true","apps.tanzu.vmware.com/workload-type":"web"},"name":"tanzu-java-web-app","namespace":"developer"},"spec":{"params":[{"name":"git_user_email","value":"cpulcini2003@gmail.com"},{"name":"git_user_name","value":"cpulcini2003"},{"name":"gitops_server_address","value":"https://github.com/"},{"name":"gitops_repository_owner","value":"cpulcini2003"},{"name":"gitops_repository_name","value":"acic1"},{"name":"annotations","value":{"autoscaling.knative.dev/minScale":"1"}},{"name":"annotations2","value":{"autoscaling.knative.dev/initial-scale":"1"}}],"source":{"git":{"ref":{"branch":"main"},"url":"https://github.com/cpulcini2003/tanzu-java-web-app"}}}}
+          {"apiVersion":"carto.run/v1alpha1","kind":"Workload","metadata":{"annotations":{},"labels":{"app.kubernetes.io/part-of":"tanzu-java-web-app","apps.tanzu.vmware.com/has-tests":"true","apps.tanzu.vmware.com/workload-type":"web"},"name":"tanzu-java-web-app","namespace":"developer"},"spec":{"params":[{"name":"git_user_email","value":"cpulcini2003@gmail.com"},{"name":"git_user_name","value":"cpulcini2003"},{"name":"gitops_server_address","value":"https://github.com/"},{"name":"gitops_repository_owner","value":"cpulcini2003"},{"name":"gitops_repository_name","value":"acic1"}],"source":{"git":{"ref":{"branch":"main"},"url":"https://github.com/cpulcini2003/tanzu-java-web-app"}}}}
       labels:
         app.kubernetes.io/component: run
         app.kubernetes.io/part-of: tanzu-java-web-app
@@ -44,7 +43,7 @@ spec:
       - env:
         - name: JAVA_TOOL_OPTIONS
           value: -Dmanagement.endpoint.health.probes.add-additional-paths="true" -Dmanagement.endpoint.health.show-details=always -Dmanagement.endpoints.web.base-path="/actuator" -Dmanagement.endpoints.web.exposure.include=* -Dmanagement.health.probes.enabled="true" -Dmanagement.server.port="8081" -Dserver.port="8080" -Dserver.shutdown.grace-period="24s"
-        image: harbor.tanzu.vxlab.local/tap/supply-chain/tanzu-java-web-app-developer@sha256:2383da75a4f52454384c0395c8063ee450d59434b4e3bf36c0021bc0932fdd18
+        image: harbor.h2o-4-933.h2o.vmware.com/tap-project/supply-chain/tanzu-java-web-app-developer@sha256:3908d83e9a90d0767fc7b5b24f31a89da3120b815b076335d235207dacda0f71
         livenessProbe:
           httpGet:
             path: /livez
